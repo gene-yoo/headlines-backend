@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    binding.pry
+    render text: 'Hello World'
   end
 
   def new
