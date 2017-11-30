@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130164014) do
+ActiveRecord::Schema.define(version: 20171130230040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,33 @@ ActiveRecord::Schema.define(version: 20171130164014) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "source_categories", force: :cascade do |t|
+    t.bigint "source_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_source_categories_on_category_id"
+    t.index ["source_id"], name: "index_source_categories_on_source_id"
+  end
+
   create_table "sources", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.string "description"
     t.string "source_url"
     t.string "language"
     t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_categories", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_sources_on_category_id"
+    t.index ["category_id"], name: "index_user_categories_on_category_id"
+    t.index ["user_id"], name: "index_user_categories_on_user_id"
   end
 
   create_table "user_sources", force: :cascade do |t|
@@ -49,7 +66,10 @@ ActiveRecord::Schema.define(version: 20171130164014) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "sources", "categories"
+  add_foreign_key "source_categories", "categories"
+  add_foreign_key "source_categories", "sources"
+  add_foreign_key "user_categories", "categories"
+  add_foreign_key "user_categories", "users"
   add_foreign_key "user_sources", "sources"
   add_foreign_key "user_sources", "users"
 end
