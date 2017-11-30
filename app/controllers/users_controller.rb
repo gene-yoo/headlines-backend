@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    render text: 'Hello World'
+    render json: 'Hello World'
   end
 
   def new
