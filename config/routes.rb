@@ -6,10 +6,9 @@ Rails.application.routes.draw do
 
       get '/home', to: 'users#home', as: 'home_path'
       get '/signup', to: 'users#new', as: 'signup'
-      
-      post '/login', to: 'auth#create', as: 'new_session'
-      get '/login', to: 'auth#show', as: 'show_session'
 
+      post '/login', to: 'auth#create', as: 'new_session'
+      get '/current_user', to: 'auth#show', as: 'show_current_session'
     end
   end
 end
