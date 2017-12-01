@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
 
     if user.valid?
       user.save
-      render json: user
+      redirect_to controller: 'auth', action: 'snake', id: user.id, username: user.username
     else
       render json: {error: 'You might rethink yoself.', status: 422}
     end

@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
+
       get '/home', to: 'users#home', as: 'home_path'
       get '/signup', to: 'users#new', as: 'signup'
+      
+      post '/login', to: 'auth#create', as: 'new_session'
+      get '/login', to: 'auth#show', as: 'show_session'
+
     end
   end
 end
