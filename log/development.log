@@ -3300,3 +3300,1466 @@ Processing by Api::V1::UsersController#new as */*
 Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-12-01 10:14:12 -0500
+  
+PG::ConnectionBad (could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+):
+  
+pg (0.21.0) lib/pg.rb:56:in `initialize'
+pg (0.21.0) lib/pg.rb:56:in `new'
+pg (0.21.0) lib/pg.rb:56:in `connect'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:695:in `connect'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `new'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `postgresql_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:759:in `new_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:803:in `checkout_new_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:782:in `try_to_checkout_new_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:743:in `acquire_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:500:in `checkout'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:374:in `connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `retrieve_connection'
+activerecord (5.1.4) lib/active_record/connection_handling.rb:116:in `retrieve_connection'
+activerecord (5.1.4) lib/active_record/connection_handling.rb:88:in `connection'
+activerecord (5.1.4) lib/active_record/migration.rb:562:in `connection'
+activerecord (5.1.4) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-12-01 10:14:14 -0500
+  
+PG::ConnectionBad (could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+):
+  
+pg (0.21.0) lib/pg.rb:56:in `initialize'
+pg (0.21.0) lib/pg.rb:56:in `new'
+pg (0.21.0) lib/pg.rb:56:in `connect'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:695:in `connect'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `new'
+activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `postgresql_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:759:in `new_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:803:in `checkout_new_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:782:in `try_to_checkout_new_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:743:in `acquire_connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:500:in `checkout'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:374:in `connection'
+activerecord (5.1.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `retrieve_connection'
+activerecord (5.1.4) lib/active_record/connection_handling.rb:116:in `retrieve_connection'
+activerecord (5.1.4) lib/active_record/connection_handling.rb:88:in `connection'
+activerecord (5.1.4) lib/active_record/migration.rb:562:in `connection'
+activerecord (5.1.4) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-12-01 10:16:16 -0500
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/geneyoo/.rvm/gems/ruby-2.3.5/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/geneyoo/.rvm/gems/ruby-2.3.5/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (5.2ms)
+Completed 200 OK in 18ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/home" for 127.0.0.1 at 2017-12-01 10:16:21 -0500
+Processing by Api::V1::UsersController#home as HTML
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:17:43 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (4.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (2.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (78.62ms)
+Completed 200 OK in 120ms (Views: 60.9ms | ActiveRecord: 28.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:19:21 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.19ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:19:33 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.63ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:19:39 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (3.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.71ms)
+Completed 200 OK in 11ms (Views: 6.6ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:19:49 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.36ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:19:59 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.0ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:20:51 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.29ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:22:07 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.97ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:22:17 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (3.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (14.06ms)
+Completed 200 OK in 16ms (Views: 10.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:22:37 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.08ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:23:05 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.16ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:23:43 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (41.61ms)
+Completed 200 OK in 44ms (Views: 42.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:23:47 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.53ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:24:24 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (2.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.03ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:25:07 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.41ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:25:13 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.56ms)
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:25:34 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.74ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:25:52 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.1ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.06ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:25:57 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.37ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:26:15 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.05ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:26:38 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.74ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:26:48 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.93ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:27:09 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.62ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:27:16 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.05ms)
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:27:45 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.85ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:28:19 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.33ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:28:24 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.38ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:28:29 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.1ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:28:32 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.87ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:28:47 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.5ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:29:20 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.74ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:29:42 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.13ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:00 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.6ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:12 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.57ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:15 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.4ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:21 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.29ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:32 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (2.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.89ms)
+Completed 200 OK in 13ms (Views: 9.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:40 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.42ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:46 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.53ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:30:59 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (3.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (3.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.54ms)
+Completed 200 OK in 19ms (Views: 11.2ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:31:08 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.9ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:31:18 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.82ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:32:36 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.83ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:32:50 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.31ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:33:48 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.56ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:34:11 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.36ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:34:43 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.12ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:36:31 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.44ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:37:12 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.08ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:37:33 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.2ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:37:37 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (2.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.03ms)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:38:33 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.8ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:39:24 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.4ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:39:35 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.96ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:39:39 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.64ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:40:42 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.02ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:40:59 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.16ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:41:53 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.47ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:42:19 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.87ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:43:00 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.09ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:43:25 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.64ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:43:36 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.29ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:44:30 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.82ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:46:02 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.94ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:46:20 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.15ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:46:29 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.77ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:46:39 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (2.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.02ms)
+Completed 200 OK in 13ms (Views: 9.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:47:43 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (6.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (2.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (23.49ms)
+Completed 200 OK in 25ms (Views: 14.9ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:47:47 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.78ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:48:26 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.97ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:49:02 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.86ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:49:36 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.35ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:49:41 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.96ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:50:14 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.52ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:50:25 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.95ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:50:39 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.21ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:51:19 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.45ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:51:31 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.1ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.66ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:51:38 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.55ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:51:58 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.5ms)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:52:07 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.84ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:53:08 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.75ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:53:21 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (2.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (19.13ms)
+Completed 200 OK in 20ms (Views: 16.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:53:59 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.04ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:54:35 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.05ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:55:47 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.45ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:55:52 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.64ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:56:00 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (3.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (4.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (20.54ms)
+Completed 200 OK in 22ms (Views: 13.7ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:56:04 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.21ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:58:42 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.65ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:59:29 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.87ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 10:59:34 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.26ms)
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:00:01 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.91ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:00:15 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.8ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1signup" for 127.0.0.1 at 2017-12-01 11:00:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1signup"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:01:01 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.04ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:01:05 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.93ms)
+Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:01:15 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.34ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:03:35 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.79ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:03:44 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.67ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:04:02 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[1, 2, 4], "user"=>{"username"=>"gene"}}
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:05:14 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (37.02ms)
+Completed 200 OK in 39ms (Views: 21.6ms | ActiveRecord: 16.4ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:05:25 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 3], "preferredCategories"=>[2, 3]}}
+Completed 204 No Content in 112746ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/home" for 127.0.0.1 at 2017-12-01 11:07:29 -0500
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#home as HTML
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:07:33 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 3], "preferredCategories"=>[2, 3]}}
+Unpermitted parameters: :preferredSources, :preferredCategories
+Completed 500 Internal Server Error in 120ms (ActiveRecord: 19.2ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'passwordConfirmation' for User.):
+  
+app/controllers/api/v1/users_controller.rb:16:in `create'
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:09:36 -0500
+Processing by Api::V1::UsersController#new as */*
+Started GET "/api/v1/home" for 127.0.0.1 at 2017-12-01 11:09:46 -0500
+[active_model_serializers]   [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (51.68ms)
+Completed 200 OK in 72ms (Views: 43.9ms | ActiveRecord: 14.4ms)
+
+
+Processing by Api::V1::UsersController#home as HTML
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:09:54 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (46.86ms)
+Completed 200 OK in 87ms (Views: 50.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:10:02 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameters: :preferredSources, :preferredCategories
+Unpermitted parameters: :preferredSources, :preferredCategories
+Completed 500 Internal Server Error in 221928ms (ActiveRecord: 8.5ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'passwordConfirmation' for User.):
+  
+app/controllers/api/v1/users_controller.rb:17:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:13:48 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (9.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSource Load (3.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "sources"."id" FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSource Load (9.2ms)[0m  [1m[34mSELECT  "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1 ORDER BY "sources"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT  "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1 ORDER BY "sources"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT  "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1 ORDER BY "sources"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "source_categories" ON "categories"."id" = "source_categories"."category_id" WHERE "source_categories"."source_id" = $1[0m  [["source_id", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT  "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1 ORDER BY "sources"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "source_categories" ON "categories"."id" = "source_categories"."category_id" WHERE "source_categories"."source_id" = $1[0m  [["source_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+Completed 500 Internal Server Error in 329563ms (ActiveRecord: 66.7ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'passwordConfirmation' for User.):
+  
+app/controllers/api/v1/users_controller.rb:17:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:19:23 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Completed 500 Internal Server Error in 55071ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'passwordConfirmation' for User.):
+  
+app/controllers/api/v1/users_controller.rb:17:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:21:17 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mCACHE Source Load (0.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+Completed 204 No Content in 104985ms (ActiveRecord: 11.0ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:23:13 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$j6LizQsOIx4im/TFHeoR2ObKe2.ovv.rstbSIfATODF20YZv5n9ra"], ["created_at", "2017-12-01 16:23:13.552370"], ["updated_at", "2017-12-01 16:23:13.552370"]]
+  [1m[35mSQL (6.0ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["source_id", 1], ["created_at", "2017-12-01 16:23:13.565297"], ["updated_at", "2017-12-01 16:23:13.565297"]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["source_id", 2], ["created_at", "2017-12-01 16:23:13.573380"], ["updated_at", "2017-12-01 16:23:13.573380"]]
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["category_id", 2], ["created_at", "2017-12-01 16:23:13.576584"], ["updated_at", "2017-12-01 16:23:13.576584"]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["category_id", 1], ["created_at", "2017-12-01 16:23:13.581088"], ["updated_at", "2017-12-01 16:23:13.581088"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 230ms (Views: 20.9ms | ActiveRecord: 24.4ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:25:06 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$gUDZ5W9txCicJ9utv3j3jOSYn/w79uZtT4jNAymovxaFBsYtyMA2q"], ["created_at", "2017-12-01 16:25:07.084744"], ["updated_at", "2017-12-01 16:25:07.084744"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["source_id", 1], ["created_at", "2017-12-01 16:25:07.087090"], ["updated_at", "2017-12-01 16:25:07.087090"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["source_id", 2], ["created_at", "2017-12-01 16:25:07.090057"], ["updated_at", "2017-12-01 16:25:07.090057"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["category_id", 2], ["created_at", "2017-12-01 16:25:07.092803"], ["updated_at", "2017-12-01 16:25:07.092803"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["category_id", 1], ["created_at", "2017-12-01 16:25:07.095263"], ["updated_at", "2017-12-01 16:25:07.095263"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.06ms)
+Completed 200 OK in 173ms (Views: 5.3ms | ActiveRecord: 14.1ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:38:23 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (1.2ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$XSVDcg92IWvtpezzLRAbJueribAZJnIXgccq6a.tmutCXpxhlQeni"], ["created_at", "2017-12-01 16:38:24.344364"], ["updated_at", "2017-12-01 16:38:24.344364"]]
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["source_id", 1], ["created_at", "2017-12-01 16:38:24.347921"], ["updated_at", "2017-12-01 16:38:24.347921"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["source_id", 2], ["created_at", "2017-12-01 16:38:24.351940"], ["updated_at", "2017-12-01 16:38:24.351940"]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["category_id", 2], ["created_at", "2017-12-01 16:38:24.355005"], ["updated_at", "2017-12-01 16:38:24.355005"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["category_id", 1], ["created_at", "2017-12-01 16:38:24.357748"], ["updated_at", "2017-12-01 16:38:24.357748"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.92ms)
+Completed 500 Internal Server Error in 300ms (ActiveRecord: 39.5ms)
+
+
+  
+JSON::GeneratorError (only generation of JSON objects or arrays allowed):
+  
+app/models/user.rb:23:in `token'
+app/controllers/api/v1/users_controller.rb:20:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:40:53 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$Xjzm0KBKtODizHt7lHEgBeYATelfX9njdS.IU0581O.24xWsUToQ2"], ["created_at", "2017-12-01 16:41:03.712382"], ["updated_at", "2017-12-01 16:41:03.712382"]]
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["source_id", 1], ["created_at", "2017-12-01 16:41:03.715594"], ["updated_at", "2017-12-01 16:41:03.715594"]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["source_id", 2], ["created_at", "2017-12-01 16:41:03.722775"], ["updated_at", "2017-12-01 16:41:03.722775"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["category_id", 2], ["created_at", "2017-12-01 16:41:03.727279"], ["updated_at", "2017-12-01 16:41:03.727279"]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["category_id", 1], ["created_at", "2017-12-01 16:41:03.729579"], ["updated_at", "2017-12-01 16:41:03.729579"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.54ms)
+Completed 500 Internal Server Error in 259ms (ActiveRecord: 18.0ms)
+
+
+  
+JSON::GeneratorError (only generation of JSON objects or arrays allowed):
+  
+app/models/user.rb:23:in `token'
+app/controllers/api/v1/users_controller.rb:20:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:41:19 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (1.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$qr4dFhy1CnmM6Ac9.ZdEI.9k4/tVO5YHhF4P/51sahNGgLn66ty4q"], ["created_at", "2017-12-01 16:41:19.828731"], ["updated_at", "2017-12-01 16:41:19.828731"]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["source_id", 1], ["created_at", "2017-12-01 16:41:19.832945"], ["updated_at", "2017-12-01 16:41:19.832945"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["source_id", 2], ["created_at", "2017-12-01 16:41:19.836514"], ["updated_at", "2017-12-01 16:41:19.836514"]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["category_id", 2], ["created_at", "2017-12-01 16:41:19.839496"], ["updated_at", "2017-12-01 16:41:19.839496"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["category_id", 1], ["created_at", "2017-12-01 16:41:19.842239"], ["updated_at", "2017-12-01 16:41:19.842239"]]
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (96387.79ms)
+Completed 500 Internal Server Error in 96676ms (ActiveRecord: 47.4ms)
+
+
+  
+JSON::GeneratorError (only generation of JSON objects or arrays allowed):
+  
+app/models/user.rb:24:in `token'
+app/controllers/api/v1/users_controller.rb:20:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 11:43:03 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[1, 2], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (1, 2)[0m
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$ElybckApiWadgGGDl00y8.q4X8jeNHyZA94WmtMiSFMGAvr7hV6bm"], ["created_at", "2017-12-01 16:43:13.813744"], ["updated_at", "2017-12-01 16:43:13.813744"]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["source_id", 1], ["created_at", "2017-12-01 16:43:13.816182"], ["updated_at", "2017-12-01 16:43:13.816182"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["source_id", 2], ["created_at", "2017-12-01 16:43:13.818829"], ["updated_at", "2017-12-01 16:43:13.818829"]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["category_id", 2], ["created_at", "2017-12-01 16:43:13.821961"], ["updated_at", "2017-12-01 16:43:13.821961"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["category_id", 1], ["created_at", "2017-12-01 16:43:13.825088"], ["updated_at", "2017-12-01 16:43:13.825088"]]
+  [1m[35m (8.8ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4591.05ms)
+Completed 200 OK in 4758ms (Views: 4595.3ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:55:15 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (30.55ms)
+Completed 200 OK in 74ms (Views: 39.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:55:19 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.88ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:55:33 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.74ms)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 11:55:49 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (2.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (2.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.62ms)
+Completed 200 OK in 18ms (Views: 12.4ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:01:45 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.43ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:03:56 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.35ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:04:05 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.15ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:04:11 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.05ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:04:16 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.52ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:04:26 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.08ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:04:43 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.62ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:05:08 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.51ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 12:05:37 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"becky", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 4], "preferredCategories"=>[1, 4]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (2, 4)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (1, 4)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "becky"], ["password_digest", "$2a$10$tD/OerFjN652oePOPmXmpecjsXvlS82.Jb/Bp/Si41dOuCfP9wdbO"], ["created_at", "2017-12-01 17:05:37.299012"], ["updated_at", "2017-12-01 17:05:37.299012"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 9], ["source_id", 2], ["created_at", "2017-12-01 17:05:37.301282"], ["updated_at", "2017-12-01 17:05:37.301282"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 9], ["source_id", 4], ["created_at", "2017-12-01 17:05:37.303478"], ["updated_at", "2017-12-01 17:05:37.303478"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 9], ["category_id", 1], ["created_at", "2017-12-01 17:05:37.305758"], ["updated_at", "2017-12-01 17:05:37.305758"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 9], ["category_id", 4], ["created_at", "2017-12-01 17:05:37.307824"], ["updated_at", "2017-12-01 17:05:37.307824"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.86ms)
+Completed 200 OK in 143ms (Views: 4.5ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:06:04 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.54ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 12:06:10 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"becky", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 3], "preferredCategories"=>[1, 2]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (2, 3)[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (1, 2)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "becky"], ["password_digest", "$2a$10$lb9DZyCl1rhDJ9Qto1rfV.O4zqvpa.U37pTzf3/slDU3zU7XQIe.."], ["created_at", "2017-12-01 17:06:11.043012"], ["updated_at", "2017-12-01 17:06:11.043012"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 10], ["source_id", 2], ["created_at", "2017-12-01 17:06:11.044973"], ["updated_at", "2017-12-01 17:06:11.044973"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 10], ["source_id", 3], ["created_at", "2017-12-01 17:06:11.046812"], ["updated_at", "2017-12-01 17:06:11.046812"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 10], ["category_id", 1], ["created_at", "2017-12-01 17:06:11.049483"], ["updated_at", "2017-12-01 17:06:11.049483"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 10], ["category_id", 2], ["created_at", "2017-12-01 17:06:11.052027"], ["updated_at", "2017-12-01 17:06:11.052027"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.92ms)
+Completed 200 OK in 126ms (Views: 1.9ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:07:07 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.26ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:07:25 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (2.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (10.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (28.48ms)
+Completed 200 OK in 30ms (Views: 16.9ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:07:58 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.66ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/users/2" for 127.0.0.1 at 2017-12-01 12:08:24 -0500
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/user/2" for 127.0.0.1 at 2017-12-01 12:08:29 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/user/2"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/user/1" for 127.0.0.1 at 2017-12-01 12:08:33 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/user/1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-12-01 12:08:36 -0500
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:08:56 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.57ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 12:09:04 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"becky", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 3], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (2, 3)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "becky"], ["password_digest", "$2a$10$nrArCqsx80nuie7WxKVb0erKs84LTUrY/wFezzCYBNVASmPsvJWme"], ["created_at", "2017-12-01 17:09:04.202037"], ["updated_at", "2017-12-01 17:09:04.202037"]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["source_id", 2], ["created_at", "2017-12-01 17:09:04.204462"], ["updated_at", "2017-12-01 17:09:04.204462"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["source_id", 3], ["created_at", "2017-12-01 17:09:04.207392"], ["updated_at", "2017-12-01 17:09:04.207392"]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["category_id", 2], ["created_at", "2017-12-01 17:09:04.210533"], ["updated_at", "2017-12-01 17:09:04.210533"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["category_id", 1], ["created_at", "2017-12-01 17:09:04.213206"], ["updated_at", "2017-12-01 17:09:04.213206"]]
+  [1m[35m (8.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.91ms)
+Completed 200 OK in 129ms (Views: 2.1ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:09:53 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.41ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-01 12:10:01 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (2.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (3.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.6ms)
+Completed 200 OK in 18ms (Views: 11.6ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-01 12:11:04 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"rick", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 5], "preferredCategories"=>[2, 1]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (2, 5)[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 1)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "rick"], ["password_digest", "$2a$10$2ZK1C8lA8RAF3t1W.0K5mex37xX4Px6V62OHYNoYosZlZq9jHFwdK"], ["created_at", "2017-12-01 17:11:05.060004"], ["updated_at", "2017-12-01 17:11:05.060004"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 12], ["source_id", 2], ["created_at", "2017-12-01 17:11:05.062158"], ["updated_at", "2017-12-01 17:11:05.062158"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 12], ["source_id", 5], ["created_at", "2017-12-01 17:11:05.064416"], ["updated_at", "2017-12-01 17:11:05.064416"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 12], ["category_id", 2], ["created_at", "2017-12-01 17:11:05.067410"], ["updated_at", "2017-12-01 17:11:05.067410"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 12], ["category_id", 1], ["created_at", "2017-12-01 17:11:05.069459"], ["updated_at", "2017-12-01 17:11:05.069459"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 210ms (Views: 5.4ms | ActiveRecord: 42.6ms)
+
+

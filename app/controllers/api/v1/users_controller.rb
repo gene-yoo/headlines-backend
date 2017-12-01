@@ -13,7 +13,14 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    binding.pry
+    user = User.new(user_params)
+
+    if user.valid?
+      user.save
+      render json: user
+    else
+      render json: {error: 'You might rethink yoself.', status: 422}
+    end
   end
 
   def show
@@ -28,6 +35,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :preferredSources => [], :preferredCategories => [])
   end
 end
