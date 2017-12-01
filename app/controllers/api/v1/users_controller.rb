@@ -1,12 +1,19 @@
 class Api::V1::UsersController < ApplicationController
-  def index
+  def home
     render json: 'Hello World'
   end
 
+  def index
+  end
+
   def new
+    sources = Source.all
+    categories = Category.all
+    render json: { sources: sources, categories: categories }
   end
 
   def create
+    binding.pry
   end
 
   def show
