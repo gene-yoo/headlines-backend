@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       post '/login', to: 'auth#create', as: 'new_session'
       get '/current_user', to: 'auth#show', as: 'show_current_session'
+      get '/snake', to: 'auth#snake', as: 'snake_path'
     end
   end
 end
