@@ -9443,3 +9443,1571 @@ Processing by Api::V1::UsersController#new as HTML
 Completed 200 OK in 137ms (Views: 71.2ms | ActiveRecord: 38.2ms)
 
 
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (177.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "procrastination-station_development"[0m
+  [1m[35m (162.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "procrastination-station_test"[0m
+  [1m[35m (537.4ms)[0m  [1m[35mCREATE DATABASE "procrastination-station_development" ENCODING = 'unicode'[0m
+  [1m[35m (356.6ms)[0m  [1m[35mCREATE DATABASE "procrastination-station_test" ENCODING = 'unicode'[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2769039665014825125)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171130143030)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130143030"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20171130161748)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130161748"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSources (20171130161755)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "sources" ("id" bigserial primary key, "name" character varying, "slug" character varying, "description" character varying, "source_url" character varying, "language" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130161755"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserSources (20171130164014)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "user_sources" ("id" bigserial primary key, "user_id" bigint, "source_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_fe3685e002"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_93bd35aef3"
+FOREIGN KEY ("source_id")
+  REFERENCES "sources" ("id")
+)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_user_sources_on_user_id" ON "user_sources"  ("user_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_user_sources_on_source_id" ON "user_sources"  ("source_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130164014"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserCategories (20171130230018)
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "user_categories" ("id" bigserial primary key, "user_id" bigint, "category_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_1cc6b36bdf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_0457e32cde"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_user_categories_on_user_id" ON "user_categories"  ("user_id")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_user_categories_on_category_id" ON "user_categories"  ("category_id")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130230018"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSourceCategories (20171130230040)
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "source_categories" ("id" bigserial primary key, "source_id" bigint, "category_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_6ac565c457"
+FOREIGN KEY ("source_id")
+  REFERENCES "sources" ("id")
+, CONSTRAINT "fk_rails_adfb8fa77d"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_source_categories_on_source_id" ON "source_categories"  ("source_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_source_categories_on_category_id" ON "source_categories"  ("category_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130230040"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-12-04 18:14:02.189323"], ["updated_at", "2017-12-04 18:14:02.189323"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2769039665014825125)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUserSource Load (1.3ms)[0m  [1m[34mSELECT "user_sources".* FROM "user_sources"[0m
+  [1m[36mUserCategory Load (1.3ms)[0m  [1m[34mSELECT "user_categories".* FROM "user_categories"[0m
+  [1m[36mSourceCategory Load (1.0ms)[0m  [1m[34mSELECT "source_categories".* FROM "source_categories"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$lzejA8f0S19l9KDDy8DpYueHRRPR4Sg.aQ6imGPV4utyIjSC4MKXm"], ["created_at", "2017-12-04 18:14:09.450364"], ["updated_at", "2017-12-04 18:14:09.450364"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "becky"], ["password_digest", "$2a$10$9jFe4n3Sp4f6XA/gogvT2.TDAz5m0gA3H/7bWVZZmNvyHM5tdfDlS"], ["created_at", "2017-12-04 18:14:09.554929"], ["updated_at", "2017-12-04 18:14:09.554929"]]
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "general"], ["created_at", "2017-12-04 18:14:09.577193"], ["updated_at", "2017-12-04 18:14:09.577193"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "business"], ["created_at", "2017-12-04 18:14:09.580749"], ["updated_at", "2017-12-04 18:14:09.580749"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "entertainment"], ["created_at", "2017-12-04 18:14:09.583107"], ["updated_at", "2017-12-04 18:14:09.583107"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "technology"], ["created_at", "2017-12-04 18:14:09.585285"], ["updated_at", "2017-12-04 18:14:09.585285"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "gaming"], ["created_at", "2017-12-04 18:14:09.588106"], ["updated_at", "2017-12-04 18:14:09.588106"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "health-and-medical"], ["created_at", "2017-12-04 18:14:09.590339"], ["updated_at", "2017-12-04 18:14:09.590339"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "music"], ["created_at", "2017-12-04 18:14:09.592417"], ["updated_at", "2017-12-04 18:14:09.592417"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "politics"], ["created_at", "2017-12-04 18:14:09.595068"], ["updated_at", "2017-12-04 18:14:09.595068"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "science-and-nature"], ["created_at", "2017-12-04 18:14:09.597879"], ["updated_at", "2017-12-04 18:14:09.597879"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "sport"], ["created_at", "2017-12-04 18:14:09.600654"], ["updated_at", "2017-12-04 18:14:09.600654"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Ars Technica"], ["slug", "ars-technica"], ["description", "The PC enthusiast's resource. Power users and the tools they love, without computing religion."], ["source_url", "http://arstechnica.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.619148"], ["updated_at", "2017-12-04 18:14:09.619148"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Axios"], ["slug", "axios"], ["description", "Axios are a new media company delivering vital, trustworthy news and analysis in the most efficient, illuminating and shareable ways possible."], ["source_url", "https://www.axios.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.622647"], ["updated_at", "2017-12-04 18:14:09.622647"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Bleacher Report"], ["slug", "bleacher-report"], ["description", "Sports journalists and bloggers covering NFL, MLB, NBA, NHL, MMA, college football and basketball, NASCAR, fantasy sports and more. News, photos, mock drafts, game scores, player profiles and more!"], ["source_url", "http://www.bleacherreport.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.625338"], ["updated_at", "2017-12-04 18:14:09.625338"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Business Insider"], ["slug", "business-insider"], ["description", "Business Insider is a fast-growing business site with deep financial, media, tech, and other industry verticals. Launched in 2007, the site is now the largest business news site on the web."], ["source_url", "http://www.businessinsider.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.629168"], ["updated_at", "2017-12-04 18:14:09.629168"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Buzzfeed"], ["slug", "buzzfeed"], ["description", "BuzzFeed is a cross-platform, global network for news and entertainment that generates seven billion views each month."], ["source_url", "https://www.buzzfeed.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.632286"], ["updated_at", "2017-12-04 18:14:09.632286"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Crypto Coins News"], ["slug", "crypto-coins-news"], ["description", "Providing breaking cryptocurrency news - focusing on Bitcoin, Ethereum, ICOs, blockchain technology, and smart contracts."], ["source_url", "https://www.cryptocoinsnews.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.635927"], ["updated_at", "2017-12-04 18:14:09.635927"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Engadget"], ["slug", "engadget"], ["description", "Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics."], ["source_url", "https://www.engadget.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.639610"], ["updated_at", "2017-12-04 18:14:09.639610"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Entertainment Weekly"], ["slug", "entertainment-weekly"], ["description", "Online version of the print magazine includes entertainment news, interviews, reviews of music, film, TV and books, and a special area for magazine subscribers."], ["source_url", "http://www.ew.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.643106"], ["updated_at", "2017-12-04 18:14:09.643106"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "ESPN"], ["slug", "espn"], ["description", "ESPN has up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more."], ["source_url", "http://espn.go.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.646288"], ["updated_at", "2017-12-04 18:14:09.646288"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Fortune"], ["slug", "fortune"], ["description", "Fortune 500 Daily and Breaking Business News"], ["source_url", "http://fortune.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.649059"], ["updated_at", "2017-12-04 18:14:09.649059"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Fox Sports"], ["slug", "fox-sports"], ["description", "Find live scores, player and team news, videos, rumors, stats, standings, schedules and fantasy games on FOX Sports."], ["source_url", "http://www.foxsports.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.652252"], ["updated_at", "2017-12-04 18:14:09.652252"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Google News"], ["slug", "google-news"], ["description", "Comprehensive, up-to-date news coverage, aggregated from sources all over the world by Google News."], ["source_url", "https://news.google.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.655754"], ["updated_at", "2017-12-04 18:14:09.655754"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Hacker News"], ["slug", "hacker-news"], ["description", "Hacker News is a social news website focusing on computer science and entrepreneurship. It is run by Paul Graham's investment fund and startup incubator, Y Combinator. In general, content that can be submitted is defined as \"anything that gratifies one's intellectual curiosity\"."], ["source_url", "https://news.ycombinator.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.659145"], ["updated_at", "2017-12-04 18:14:09.659145"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "IGN"], ["slug", "ign"], ["description", "IGN is your site for Xbox One, PS4, PC, Wii-U, Xbox 360, PS3, Wii, 3DS, PS Vita and iPhone games with expert reviews, news, previews, trailers, cheat codes, wiki guides and walkthroughs."], ["source_url", "http://www.ign.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.663347"], ["updated_at", "2017-12-04 18:14:09.663347"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Mashable"], ["slug", "mashable"], ["description", "Mashable is a global, multi-platform media and entertainment company."], ["source_url", "http://mashable.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.667088"], ["updated_at", "2017-12-04 18:14:09.667088"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MTV News"], ["slug", "mtv-news"], ["description", "The ultimate news source for music, celebrity, entertainment, movies, and current events on the web. It's pop culture on steroids."], ["source_url", "http://www.mtv.com/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.670128"], ["updated_at", "2017-12-04 18:14:09.670128"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "National Geographic"], ["slug", "national-geographic"], ["description", "Reporting our world daily: original nature and science news from National Geographic."], ["source_url", "http://news.nationalgeographic.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.673180"], ["updated_at", "2017-12-04 18:14:09.673180"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New Scientist"], ["slug", "new-scientist"], ["description", "Breaking science and technology news from around the world. Exclusive stories and expert analysis on space, technology, health, physics, life and Earth."], ["source_url", "https://www.newscientist.com/section/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.676823"], ["updated_at", "2017-12-04 18:14:09.676823"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New York Magazine"], ["slug", "new-york-magazine"], ["description", "NYMAG and New York magazine cover the new, the undiscovered, the next in politics, culture, food, fashion, and behavior nationally, through a New York lens."], ["source_url", "http://nymag.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.679711"], ["updated_at", "2017-12-04 18:14:09.679711"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Next Big Future"], ["slug", "next-big-future"], ["description", "Coverage of science and technology that have the potential for disruption, and analysis of plans, policies, and technology that enable radical improvement."], ["source_url", "https://www.nextbigfuture.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.682610"], ["updated_at", "2017-12-04 18:14:09.682610"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "NFL News"], ["slug", "nfl-news"], ["description", "The official source for NFL news, schedules, stats, scores and more."], ["source_url", "http://www.nfl.com/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.686326"], ["updated_at", "2017-12-04 18:14:09.686326"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "NHL News"], ["slug", "nhl-news"], ["description", "The most up-to-date breaking hockey news from the official source including interviews, rumors, statistics and schedules."], ["source_url", "https://www.nhl.com/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.689374"], ["updated_at", "2017-12-04 18:14:09.689374"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Polygon"], ["slug", "polygon"], ["description", "Polygon is a gaming website in partnership with Vox Media. Our culture focused site covers games, their creators, the fans, trending stories and entertainment news."], ["source_url", "http://www.polygon.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.692865"], ["updated_at", "2017-12-04 18:14:09.692865"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Recode"], ["slug", "recode"], ["description", "Get the latest independent tech news, reviews and analysis from Recode with the most informed and respected journalists in technology and media."], ["source_url", "http://www.recode.net"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.696489"], ["updated_at", "2017-12-04 18:14:09.696489"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Reddit /r/all"], ["slug", "reddit-r-all"], ["description", "Reddit is an entertainment, social news networking service, and news website. Reddit's registered community members can submit content, such as text posts or direct links."], ["source_url", "https://www.reddit.com/r/all"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.699805"], ["updated_at", "2017-12-04 18:14:09.699805"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "TechCrunch"], ["slug", "techcrunch"], ["description", "TechCrunch is a leading technology media property, dedicated to obsessively profiling startups, reviewing new Internet products, and breaking tech news."], ["source_url", "https://techcrunch.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.702995"], ["updated_at", "2017-12-04 18:14:09.702995"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "TechRadar"], ["slug", "techradar"], ["description", "The latest technology news and reviews, covering computing, home entertainment systems, gadgets and more."], ["source_url", "http://www.techradar.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.706145"], ["updated_at", "2017-12-04 18:14:09.706145"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "The Next Web"], ["slug", "the-next-web"], ["description", "The Next Web is one of the world’s largest online publications that delivers an international perspective on the latest news about Internet technology, business and culture."], ["source_url", "http://thenextweb.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.708948"], ["updated_at", "2017-12-04 18:14:09.708948"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "The Verge"], ["slug", "the-verge"], ["description", "The Verge covers the intersection of technology, science, art, and culture."], ["source_url", "http://www.theverge.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.711876"], ["updated_at", "2017-12-04 18:14:09.711876"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Vice News"], ["slug", "vice-news"], ["description", "Vice News is Vice Media, Inc.'s current affairs channel, producing daily documentary essays and video through its website and YouTube channel. It promotes itself on its coverage of \"under - reported stories\"."], ["source_url", "https://news.vice.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.714652"], ["updated_at", "2017-12-04 18:14:09.714652"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Wired"], ["slug", "wired"], ["description", "Wired is a monthly American magazine, published in print and online editions, that focuses on how emerging technologies affect culture, the economy, and politics."], ["source_url", "https://www.wired.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:14:09.717836"], ["updated_at", "2017-12-04 18:14:09.717836"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-12-04 13:14:39 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/geneyoo/.rvm/gems/ruby-2.3.5/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/geneyoo/.rvm/gems/ruby-2.3.5/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (7.8ms)
+Completed 200 OK in 23ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/home" for 127.0.0.1 at 2017-12-04 13:14:45 -0500
+Processing by Api::V1::UsersController#home as HTML
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:15:30 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (157.67ms)
+Completed 200 OK in 212ms (Views: 138.8ms | ActiveRecord: 41.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:15:45 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (25.33ms)
+Completed 200 OK in 27ms (Views: 24.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:17:21 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (3.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (67.12ms)
+Completed 200 OK in 74ms (Views: 69.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:17:29 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.1ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (28.53ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:18:16 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (28.33ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:18:45 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (25.1ms)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:18:50 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (7.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (4.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (41.36ms)
+Completed 200 OK in 44ms (Views: 31.8ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:19:20 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (27.92ms)
+Completed 200 OK in 29ms (Views: 27.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:19:25 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (2.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (34.54ms)
+Completed 200 OK in 36ms (Views: 31.7ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:19:34 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (5.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (40.45ms)
+Completed 200 OK in 42ms (Views: 34.4ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:20:12 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (30.02ms)
+Completed 200 OK in 32ms (Views: 29.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:20:19 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (27.03ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:20:27 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (26.16ms)
+Completed 200 OK in 27ms (Views: 25.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:20:32 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (43.04ms)
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:20:56 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (25.89ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:22:00 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.94ms)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:22:03 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.31ms)
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:22:13 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.35ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:22:20 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (27.78ms)
+Completed 200 OK in 29ms (Views: 26.0ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-04 13:22:29 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[17, 18], "preferredCategories"=>[1, 2]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (17, 18)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (1, 2)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$hQmZZ4irduHLeXsZpTLKXuGkkR1js0LbjGPneeV5689.dD3EHeLSW"], ["created_at", "2017-12-04 18:22:29.933995"], ["updated_at", "2017-12-04 18:22:29.933995"]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["source_id", 17], ["created_at", "2017-12-04 18:22:29.936961"], ["updated_at", "2017-12-04 18:22:29.936961"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["source_id", 18], ["created_at", "2017-12-04 18:22:29.941379"], ["updated_at", "2017-12-04 18:22:29.941379"]]
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["category_id", 1], ["created_at", "2017-12-04 18:22:29.943885"], ["updated_at", "2017-12-04 18:22:29.943885"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["category_id", 2], ["created_at", "2017-12-04 18:22:29.946938"], ["updated_at", "2017-12-04 18:22:29.946938"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/v1/snake?id=3&username=gene
+Completed 302 Found in 204ms (ActiveRecord: 24.8ms)
+
+
+Started GET "/api/v1/snake?id=3&username=gene" for 127.0.0.1 at 2017-12-04 13:22:29 -0500
+Processing by Api::V1::AuthController#snake as JSON
+  Parameters: {"id"=>"3", "username"=>"gene", "auth"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.2ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (18.42ms)
+Completed 200 OK in 15835ms (Views: 37.8ms | ActiveRecord: 3.5ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (166.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "procrastination-station_development"[0m
+  [1m[35m (156.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "procrastination-station_test"[0m
+  [1m[35m (361.9ms)[0m  [1m[35mCREATE DATABASE "procrastination-station_development" ENCODING = 'unicode'[0m
+  [1m[35m (353.7ms)[0m  [1m[35mCREATE DATABASE "procrastination-station_test" ENCODING = 'unicode'[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2769039665014825125)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171130143030)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130143030"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20171130161748)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130161748"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSources (20171130161755)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "sources" ("id" bigserial primary key, "name" character varying, "slug" character varying, "description" character varying, "source_url" character varying, "language" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130161755"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserSources (20171130164014)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "user_sources" ("id" bigserial primary key, "user_id" bigint, "source_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_fe3685e002"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_93bd35aef3"
+FOREIGN KEY ("source_id")
+  REFERENCES "sources" ("id")
+)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_user_sources_on_user_id" ON "user_sources"  ("user_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_user_sources_on_source_id" ON "user_sources"  ("source_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130164014"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserCategories (20171130230018)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "user_categories" ("id" bigserial primary key, "user_id" bigint, "category_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_1cc6b36bdf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_0457e32cde"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_user_categories_on_user_id" ON "user_categories"  ("user_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_user_categories_on_category_id" ON "user_categories"  ("category_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130230018"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSourceCategories (20171130230040)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "source_categories" ("id" bigserial primary key, "source_id" bigint, "category_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_6ac565c457"
+FOREIGN KEY ("source_id")
+  REFERENCES "sources" ("id")
+, CONSTRAINT "fk_rails_adfb8fa77d"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_source_categories_on_source_id" ON "source_categories"  ("source_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_source_categories_on_category_id" ON "source_categories"  ("category_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171130230040"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-12-04 18:24:25.259532"], ["updated_at", "2017-12-04 18:24:25.259532"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2769039665014825125)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUserSource Load (0.9ms)[0m  [1m[34mSELECT "user_sources".* FROM "user_sources"[0m
+  [1m[36mUserCategory Load (0.9ms)[0m  [1m[34mSELECT "user_categories".* FROM "user_categories"[0m
+  [1m[36mSourceCategory Load (1.0ms)[0m  [1m[34mSELECT "source_categories".* FROM "source_categories"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "general"], ["created_at", "2017-12-04 18:24:35.069741"], ["updated_at", "2017-12-04 18:24:35.069741"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "business"], ["created_at", "2017-12-04 18:24:35.082794"], ["updated_at", "2017-12-04 18:24:35.082794"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "entertainment"], ["created_at", "2017-12-04 18:24:35.087015"], ["updated_at", "2017-12-04 18:24:35.087015"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "technology"], ["created_at", "2017-12-04 18:24:35.091402"], ["updated_at", "2017-12-04 18:24:35.091402"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "gaming"], ["created_at", "2017-12-04 18:24:35.094439"], ["updated_at", "2017-12-04 18:24:35.094439"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "health-and-medical"], ["created_at", "2017-12-04 18:24:35.097309"], ["updated_at", "2017-12-04 18:24:35.097309"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "music"], ["created_at", "2017-12-04 18:24:35.100168"], ["updated_at", "2017-12-04 18:24:35.100168"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "politics"], ["created_at", "2017-12-04 18:24:35.102843"], ["updated_at", "2017-12-04 18:24:35.102843"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "science-and-nature"], ["created_at", "2017-12-04 18:24:35.107020"], ["updated_at", "2017-12-04 18:24:35.107020"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "sport"], ["created_at", "2017-12-04 18:24:35.110193"], ["updated_at", "2017-12-04 18:24:35.110193"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Ars Technica"], ["slug", "ars-technica"], ["description", "The PC enthusiast's resource. Power users and the tools they love, without computing religion."], ["source_url", "http://arstechnica.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.126298"], ["updated_at", "2017-12-04 18:24:35.126298"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Axios"], ["slug", "axios"], ["description", "Axios are a new media company delivering vital, trustworthy news and analysis in the most efficient, illuminating and shareable ways possible."], ["source_url", "https://www.axios.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.131575"], ["updated_at", "2017-12-04 18:24:35.131575"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Bleacher Report"], ["slug", "bleacher-report"], ["description", "Sports journalists and bloggers covering NFL, MLB, NBA, NHL, MMA, college football and basketball, NASCAR, fantasy sports and more. News, photos, mock drafts, game scores, player profiles and more!"], ["source_url", "http://www.bleacherreport.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.135261"], ["updated_at", "2017-12-04 18:24:35.135261"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Business Insider"], ["slug", "business-insider"], ["description", "Business Insider is a fast-growing business site with deep financial, media, tech, and other industry verticals. Launched in 2007, the site is now the largest business news site on the web."], ["source_url", "http://www.businessinsider.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.140631"], ["updated_at", "2017-12-04 18:24:35.140631"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Buzzfeed"], ["slug", "buzzfeed"], ["description", "BuzzFeed is a cross-platform, global network for news and entertainment that generates seven billion views each month."], ["source_url", "https://www.buzzfeed.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.144872"], ["updated_at", "2017-12-04 18:24:35.144872"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Crypto Coins News"], ["slug", "crypto-coins-news"], ["description", "Providing breaking cryptocurrency news - focusing on Bitcoin, Ethereum, ICOs, blockchain technology, and smart contracts."], ["source_url", "https://www.cryptocoinsnews.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.148550"], ["updated_at", "2017-12-04 18:24:35.148550"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Engadget"], ["slug", "engadget"], ["description", "Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics."], ["source_url", "https://www.engadget.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.151670"], ["updated_at", "2017-12-04 18:24:35.151670"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Entertainment Weekly"], ["slug", "entertainment-weekly"], ["description", "Online version of the print magazine includes entertainment news, interviews, reviews of music, film, TV and books, and a special area for magazine subscribers."], ["source_url", "http://www.ew.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.154796"], ["updated_at", "2017-12-04 18:24:35.154796"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "ESPN"], ["slug", "espn"], ["description", "ESPN has up-to-the-minute sports news coverage, scores, highlights and commentary for NFL, MLB, NBA, College Football, NCAA Basketball and more."], ["source_url", "http://espn.go.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.158525"], ["updated_at", "2017-12-04 18:24:35.158525"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Fortune"], ["slug", "fortune"], ["description", "Fortune 500 Daily and Breaking Business News"], ["source_url", "http://fortune.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.161979"], ["updated_at", "2017-12-04 18:24:35.161979"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Fox Sports"], ["slug", "fox-sports"], ["description", "Find live scores, player and team news, videos, rumors, stats, standings, schedules and fantasy games on FOX Sports."], ["source_url", "http://www.foxsports.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.165260"], ["updated_at", "2017-12-04 18:24:35.165260"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Google News"], ["slug", "google-news"], ["description", "Comprehensive, up-to-date news coverage, aggregated from sources all over the world by Google News."], ["source_url", "https://news.google.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.168063"], ["updated_at", "2017-12-04 18:24:35.168063"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Hacker News"], ["slug", "hacker-news"], ["description", "Hacker News is a social news website focusing on computer science and entrepreneurship. It is run by Paul Graham's investment fund and startup incubator, Y Combinator. In general, content that can be submitted is defined as \"anything that gratifies one's intellectual curiosity\"."], ["source_url", "https://news.ycombinator.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.172238"], ["updated_at", "2017-12-04 18:24:35.172238"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "IGN"], ["slug", "ign"], ["description", "IGN is your site for Xbox One, PS4, PC, Wii-U, Xbox 360, PS3, Wii, 3DS, PS Vita and iPhone games with expert reviews, news, previews, trailers, cheat codes, wiki guides and walkthroughs."], ["source_url", "http://www.ign.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.176101"], ["updated_at", "2017-12-04 18:24:35.176101"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Mashable"], ["slug", "mashable"], ["description", "Mashable is a global, multi-platform media and entertainment company."], ["source_url", "http://mashable.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.178976"], ["updated_at", "2017-12-04 18:24:35.178976"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "MTV News"], ["slug", "mtv-news"], ["description", "The ultimate news source for music, celebrity, entertainment, movies, and current events on the web. It's pop culture on steroids."], ["source_url", "http://www.mtv.com/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.182882"], ["updated_at", "2017-12-04 18:24:35.182882"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "National Geographic"], ["slug", "national-geographic"], ["description", "Reporting our world daily: original nature and science news from National Geographic."], ["source_url", "http://news.nationalgeographic.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.186181"], ["updated_at", "2017-12-04 18:24:35.186181"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New Scientist"], ["slug", "new-scientist"], ["description", "Breaking science and technology news from around the world. Exclusive stories and expert analysis on space, technology, health, physics, life and Earth."], ["source_url", "https://www.newscientist.com/section/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.189789"], ["updated_at", "2017-12-04 18:24:35.189789"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "New York Magazine"], ["slug", "new-york-magazine"], ["description", "NYMAG and New York magazine cover the new, the undiscovered, the next in politics, culture, food, fashion, and behavior nationally, through a New York lens."], ["source_url", "http://nymag.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.193649"], ["updated_at", "2017-12-04 18:24:35.193649"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Next Big Future"], ["slug", "next-big-future"], ["description", "Coverage of science and technology that have the potential for disruption, and analysis of plans, policies, and technology that enable radical improvement."], ["source_url", "https://www.nextbigfuture.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.197112"], ["updated_at", "2017-12-04 18:24:35.197112"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "NFL News"], ["slug", "nfl-news"], ["description", "The official source for NFL news, schedules, stats, scores and more."], ["source_url", "http://www.nfl.com/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.200785"], ["updated_at", "2017-12-04 18:24:35.200785"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "NHL News"], ["slug", "nhl-news"], ["description", "The most up-to-date breaking hockey news from the official source including interviews, rumors, statistics and schedules."], ["source_url", "https://www.nhl.com/news"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.204825"], ["updated_at", "2017-12-04 18:24:35.204825"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Polygon"], ["slug", "polygon"], ["description", "Polygon is a gaming website in partnership with Vox Media. Our culture focused site covers games, their creators, the fans, trending stories and entertainment news."], ["source_url", "http://www.polygon.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.208610"], ["updated_at", "2017-12-04 18:24:35.208610"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Recode"], ["slug", "recode"], ["description", "Get the latest independent tech news, reviews and analysis from Recode with the most informed and respected journalists in technology and media."], ["source_url", "http://www.recode.net"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.212080"], ["updated_at", "2017-12-04 18:24:35.212080"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Reddit /r/all"], ["slug", "reddit-r-all"], ["description", "Reddit is an entertainment, social news networking service, and news website. Reddit's registered community members can submit content, such as text posts or direct links."], ["source_url", "https://www.reddit.com/r/all"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.215802"], ["updated_at", "2017-12-04 18:24:35.215802"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "TechCrunch"], ["slug", "techcrunch"], ["description", "TechCrunch is a leading technology media property, dedicated to obsessively profiling startups, reviewing new Internet products, and breaking tech news."], ["source_url", "https://techcrunch.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.219675"], ["updated_at", "2017-12-04 18:24:35.219675"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "TechRadar"], ["slug", "techradar"], ["description", "The latest technology news and reviews, covering computing, home entertainment systems, gadgets and more."], ["source_url", "http://www.techradar.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.223566"], ["updated_at", "2017-12-04 18:24:35.223566"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "The Next Web"], ["slug", "the-next-web"], ["description", "The Next Web is one of the world’s largest online publications that delivers an international perspective on the latest news about Internet technology, business and culture."], ["source_url", "http://thenextweb.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.226762"], ["updated_at", "2017-12-04 18:24:35.226762"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "The Verge"], ["slug", "the-verge"], ["description", "The Verge covers the intersection of technology, science, art, and culture."], ["source_url", "http://www.theverge.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.229725"], ["updated_at", "2017-12-04 18:24:35.229725"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Vice News"], ["slug", "vice-news"], ["description", "Vice News is Vice Media, Inc.'s current affairs channel, producing daily documentary essays and video through its website and YouTube channel. It promotes itself on its coverage of \"under - reported stories\"."], ["source_url", "https://news.vice.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.233851"], ["updated_at", "2017-12-04 18:24:35.233851"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "sources" ("name", "slug", "description", "source_url", "language", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Wired"], ["slug", "wired"], ["description", "Wired is a monthly American magazine, published in print and online editions, that focuses on how emerging technologies affect culture, the economy, and politics."], ["source_url", "https://www.wired.com"], ["language", "en"], ["country", "us"], ["created_at", "2017-12-04 18:24:35.237044"], ["updated_at", "2017-12-04 18:24:35.237044"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:25:27 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (65.79ms)
+Completed 200 OK in 90ms (Views: 54.5ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/api/v1/signup" for 127.0.0.1 at 2017-12-04 13:25:38 -0500
+Processing by Api::V1::UsersController#new as */*
+[active_model_serializers]   [1m[36mSource Load (1.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources"[0m
+[active_model_serializers]   [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (79.14ms)
+Completed 200 OK in 81ms (Views: 64.0ms | ActiveRecord: 16.7ms)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2017-12-04 13:25:46 -0500
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "preferredSources"=>[2, 3], "preferredCategories"=>[2, 3]}}
+Unpermitted parameter: :passwordConfirmation
+  [1m[36mSource Load (1.2ms)[0m  [1m[34mSELECT "sources".* FROM "sources" WHERE "sources"."id" IN (2, 3)[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (2, 3)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "gene"], ["password_digest", "$2a$10$E8Afk9Nb6dBeMMbydwgdeeJZWZU6NKL./2SylD3/Uo3zrC8v3fiba"], ["created_at", "2017-12-04 18:25:46.718576"], ["updated_at", "2017-12-04 18:25:46.718576"]]
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["source_id", 2], ["created_at", "2017-12-04 18:25:46.721661"], ["updated_at", "2017-12-04 18:25:46.721661"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "user_sources" ("user_id", "source_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["source_id", 3], ["created_at", "2017-12-04 18:25:46.724939"], ["updated_at", "2017-12-04 18:25:46.724939"]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["category_id", 2], ["created_at", "2017-12-04 18:25:46.727709"], ["updated_at", "2017-12-04 18:25:46.727709"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "user_categories" ("user_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["category_id", 3], ["created_at", "2017-12-04 18:25:46.730766"], ["updated_at", "2017-12-04 18:25:46.730766"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/v1/snake?id=1&username=gene
+Completed 302 Found in 214ms (ActiveRecord: 40.3ms)
+
+
+Started GET "/api/v1/snake?id=1&username=gene" for 127.0.0.1 at 2017-12-04 13:25:46 -0500
+Processing by Api::V1::AuthController#snake as JSON
+  Parameters: {"id"=>"1", "username"=>"gene", "auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (13.32ms)
+Completed 200 OK in 28ms (Views: 20.6ms | ActiveRecord: 2.4ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSource Load (1.2ms)[0m  [1m[34mSELECT  "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:26:56 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.75ms)
+Completed 200 OK in 15ms (Views: 8.0ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:27:22 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.04ms)
+Completed 200 OK in 14ms (Views: 7.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:27:27 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.78ms)
+Completed 200 OK in 14ms (Views: 7.1ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:27:33 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.31ms)
+Completed 200 OK in 11ms (Views: 6.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:28:42 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (11.76ms)
+Completed 200 OK in 17ms (Views: 9.6ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:28:57 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.58ms)
+Completed 200 OK in 20ms (Views: 8.4ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:29:28 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.25ms)
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:30:41 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.95ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:32:01 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.05ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:33:22 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.96ms)
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:33:27 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.43ms)
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:33:36 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.11ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:33:44 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (8.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (16.19ms)
+Completed 200 OK in 24ms (Views: 7.6ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:33:53 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.36ms)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-12-04 13:35:12 -0500
+Processing by Api::V1::AuthController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]"}, "auth"=>{"user"=>{"username"=>"gene", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.42ms)
+Completed 200 OK in 86ms (Views: 6.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:35:22 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (2.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (11.46ms)
+Completed 200 OK in 18ms (Views: 8.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:36:23 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.63ms)
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:36:27 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (2.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.5ms)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-12-04 13:36:35 -0500
+Processing by Api::V1::AuthController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]"}, "auth"=>{"user"=>{"username"=>"gene", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (15.8ms)
+Completed 200 OK in 108ms (Views: 15.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:37:06 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.6ms)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:37:25 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.35ms)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:38:57 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.06ms)
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/login" for 127.0.0.1 at 2017-12-04 13:39:06 -0500
+Processing by Api::V1::AuthController#create as JSON
+  Parameters: {"user"=>{"username"=>"gene", "password"=>"[FILTERED]"}, "auth"=>{"user"=>{"username"=>"gene", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.04ms)
+Completed 200 OK in 97ms (Views: 3.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:39:52 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.09ms)
+Completed 200 OK in 11ms (Views: 6.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:40:08 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.91ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:40:37 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.71ms)
+Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:40:59 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.63ms)
+Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:41:31 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.69ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:41:45 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.85ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:41:59 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.02ms)
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:44:55 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (9.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (2.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (13.37ms)
+Completed 200 OK in 36ms (Views: 11.2ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:45:00 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.27ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:45:42 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (6.2ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (12.69ms)
+Completed 200 OK in 29ms (Views: 6.9ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:46:22 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (10.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (12.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (10.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (28.74ms)
+Completed 200 OK in 44ms (Views: 7.0ms | ActiveRecord: 32.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:47:53 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (9.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (17.02ms)
+Completed 200 OK in 26ms (Views: 7.7ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:48:14 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.38ms)
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:48:23 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.07ms)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:50:42 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (29.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (12.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (64.15ms)
+Completed 200 OK in 81ms (Views: 23.0ms | ActiveRecord: 50.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:50:55 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.0ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:51:34 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (3.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.98ms)
+Completed 200 OK in 18ms (Views: 7.4ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:51:48 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.44ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:51:55 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.68ms)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:53:34 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (3.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (3.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (14.68ms)
+Completed 200 OK in 29ms (Views: 8.9ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:55:06 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.95ms)
+Completed 200 OK in 10ms (Views: 6.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:56:17 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.91ms)
+Completed 200 OK in 20ms (Views: 7.8ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:56:39 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.6ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.38ms)
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:56:41 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.42ms)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:56:56 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.8ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:59:27 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.23ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:59:38 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.72ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 13:59:45 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.37ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:00:17 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (3.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (20.67ms)
+Completed 200 OK in 25ms (Views: 18.4ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:01:30 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.27ms)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:01:35 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.52ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:01:48 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.07ms)
+Completed 200 OK in 16ms (Views: 9.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:01:58 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.69ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:02:00 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.72ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:02:28 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.03ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:02:41 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.12ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:03:10 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (23.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (19.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (29.08ms)
+Completed 200 OK in 71ms (Views: 10.0ms | ActiveRecord: 43.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:03:15 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.84ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:03:24 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.23ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:04:20 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (8.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (7.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (21.48ms)
+Completed 200 OK in 30ms (Views: 6.4ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:04:55 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.72ms)
+Completed 200 OK in 16ms (Views: 6.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:05:13 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.02ms)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:05:24 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.84ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:05:30 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.72ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:05:57 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.16ms)
+Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:06:08 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.28ms)
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:06:16 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.86ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:06:54 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (13.7ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (9.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (28.92ms)
+Completed 200 OK in 38ms (Views: 6.8ms | ActiveRecord: 23.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:08:00 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (8.1ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (5.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (18.81ms)
+Completed 200 OK in 27ms (Views: 6.3ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:08:12 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.96ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:09:16 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.18ms)
+Completed 200 OK in 12ms (Views: 7.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:10:04 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (19.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (16.9ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (29.85ms)
+Completed 200 OK in 59ms (Views: 13.4ms | ActiveRecord: 37.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:10:20 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.1ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:10:28 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.36ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:10:48 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (15.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.0ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (53.03ms)
+Completed 200 OK in 77ms (Views: 52.3ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:10:53 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.04ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:11:14 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (1.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.65ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:16:07 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (4.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (12.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (23.06ms)
+Completed 200 OK in 27ms (Views: 6.9ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:16:32 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.06ms)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:17:14 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (11.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (10.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (28.61ms)
+Completed 200 OK in 34ms (Views: 7.2ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:21:57 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.8ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (18.04ms)
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:22:04 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.95ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:22:27 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.59ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:24:26 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (13.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (12.5ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (3.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (23.38ms)
+Completed 200 OK in 52ms (Views: 7.9ms | ActiveRecord: 30.1ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:26:19 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (3.4ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (9.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (20.62ms)
+Completed 200 OK in 44ms (Views: 8.8ms | ActiveRecord: 23.6ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:26:33 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (0.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.39ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/current_user" for 127.0.0.1 at 2017-12-04 14:26:53 -0500
+Processing by Api::V1::AuthController#show as JSON
+  Parameters: {"auth"=>{}}
+  [1m[36mUser Load (9.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "gene"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mSource Load (2.3ms)[0m  [1m[34mSELECT "sources".* FROM "sources" INNER JOIN "user_sources" ON "sources"."id" = "user_sources"."source_id" WHERE "user_sources"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mCategory Load (9.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (17.5ms)
+Completed 200 OK in 40ms (Views: 7.0ms | ActiveRecord: 20.8ms)
+
+
