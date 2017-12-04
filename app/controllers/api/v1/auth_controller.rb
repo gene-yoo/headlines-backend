@@ -24,7 +24,6 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def snake
-    binding.pry
     user = User.find_by(username: params[:username])
     if user
        # issue that user a token

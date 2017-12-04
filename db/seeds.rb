@@ -15,8 +15,6 @@ UserSource.destroy_all
 UserCategory.destroy_all
 SourceCategory.destroy_all
 
-gene = User.create(username:'gene', password:'abc')
-becky = User.create(username:'becky', password:'def')
 
 preferred_categories = [
   {name: 'general'}, {name: 'business'}, {name: 'entertainment'}, {name: 'technology'}, {name: 'gaming'}, {name: 'health-and-medical'}, {name: 'music'}, {name: 'politics'}, {name: 'science-and-nature'}, {name: "sport"}

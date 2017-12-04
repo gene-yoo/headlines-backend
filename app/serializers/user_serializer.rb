@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :source_slugs, :category_names, :token
+  attributes :id, :username, :source_slugs, :category_names, :token, :source_ids
 end

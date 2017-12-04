@@ -24,9 +24,19 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
+
   end
 
   def update
+    user = User.find(params[:id])
+    user.username = params[:user][:username]
+    user.source_ids = params[:user][:preferredSources]
+    if user.valid?
+      user.save
+      render json: user
+    else
+      render json: {error: 'You might rethink yoself.', status: 422}
+    end
   end
 
   def delete
