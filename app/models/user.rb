@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password validations: false
+  has_many :articles
 
   has_many :user_sources
   has_many :sources, through: :user_sources
@@ -13,6 +14,9 @@ class User < ApplicationRecord
 
   def source_slugs
     self.sources.map { |source| source.slug }
+  end
+  def source_names
+    self.sources.map { |source| source.name }
   end
 
   def category_names
