@@ -1,6 +1,7 @@
 class Api::V1::ArticlesController < ApplicationController
   def index
-    articles = Article.all
+    articles = Article.newsfeed
+    render json: articles
   end
 
   def create
@@ -13,7 +14,16 @@ class Api::V1::ArticlesController < ApplicationController
     end
   end
 
+  def update
+    article = Article.find(params[:id])
+    article.public = !article.public
+    article.save
+    render json: article
+  end
+
   def destroy
+    article = Article.find(params[:id])
+    article.destroy
   end
 
   private

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
-      resources :articles, only: [:index, :create, :destroy]
+      resources :articles, only: [:index, :create, :update, :destroy]
 
       get '/home', to: 'users#home', as: 'home_path'
       get '/signup', to: 'users#new', as: 'signup'
