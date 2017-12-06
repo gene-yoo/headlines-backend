@@ -31,7 +31,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   private
-  
+
   def article_params
     params.require(:article).permit(:author, :title, :description, :url, :urlToImage, :publishedAt, :user_id, :public)
   end
