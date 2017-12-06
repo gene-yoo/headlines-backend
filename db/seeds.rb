@@ -6,14 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-User.destroy_all
-Source.destroy_all
-Category.destroy_all
-
 UserSource.destroy_all
 UserCategory.destroy_all
 SourceCategory.destroy_all
+Article.destroy_all
+Source.destroy_all
+Category.destroy_all
+User.destroy_all
+
+
+
 
 preferred_categories = [
   {name: 'general'}, {name: 'business'}, {name: 'entertainment'}, {name: 'technology'}, {name: 'gaming'}, {name: 'health-and-medical'}, {name: 'music'}, {name: 'politics'}, {name: 'science-and-nature'}, {name: "sport"}
@@ -105,14 +107,6 @@ preferred_sources = [
   name: "Fox Sports",
   description: "Find live scores, player and team news, videos, rumors, stats, standings, schedules and fantasy games on FOX Sports.",
   source_url: "http://www.foxsports.com",
-  language: "en",
-  country: "us"
-  },
-  {
-  slug: "google-news",
-  name: "Google News",
-  description: "Comprehensive, up-to-date news coverage, aggregated from sources all over the world by Google News.",
-  source_url: "https://news.google.com",
   language: "en",
   country: "us"
   },
