@@ -5,9 +5,9 @@
 - API Endpoints
 
 ## About
-http://head-lines.herokuapp.com/welcome
+This README is for the API backend that supports the `HEADLINES` website (http://head-lines.herokuapp.com)
 
-`HEADLINES` was brought to you by Becky Newborn and Gene Yoo. Its intent is to provide aggregated news headlines based on a user's preferences for news sources. All news headlines were sourced from News API (https://newsapi.org/), a HTTP REST API for searching and retrieving live articles from all over the web. This README is for the API backend that supports the `HEADLINES` website. We hope you enjoy!
+`HEADLINES` was brought to you by Becky Newborn and Gene Yoo. Its intent is to provide aggregated news headlines based on a user's preferences for news sources. All news headlines were sourced from News API (https://newsapi.org/), a HTTP REST API for searching and retrieving live articles from all over the web.  We hope you enjoy!
 
 ## API Endpoints
 
