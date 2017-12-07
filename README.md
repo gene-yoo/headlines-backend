@@ -1,24 +1,17 @@
-# README
+# README for HEADLINES (API Backend)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Table of Contents
+- About
+- API Endpoints
 
-Things you may want to cover:
+## About
+http://head-lines.herokuapp.com/welcome
 
-* Ruby version
+`HEADLINES` was brought to you by Becky Newborn and Gene Yoo. Its intent is to provide aggregated news headlines based on a user's preferences for news sources. All news headlines were sourced from News API (https://newsapi.org/), a HTTP REST API for searching and retrieving live articles from all over the web. This README is for the API backend that supports the `HEADLINES` website. We hope you enjoy!
 
-* System dependencies
+## API Endpoints
 
-* Configuration
+Note: All responses from accessing any of the API endpoints mentioned below are presented in JSON format.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Articles ('/api/v1/articles')
+  - Developers may access any articles pulled into the `HEADLINES` network by accessing the endpoint above.
