@@ -13,13 +13,14 @@ This README is for the API backend that supports the `HEADLINES` website (http:/
 
 Responses from accessing the API endpoints mentioned below are presented in JSON format. At this time, most API endpoints for the `HEADLINES` website are not accessible to the public as they are used for internal data processing. Public endpoints have been provided below.
 
-1. Articles ('/api/v1/articles')
+### Articles ('/api/v1/articles')
   - Developers may access any articles pulled into the `HEADLINES` network by accessing the endpoint above.
   - These include any articles saved to profile or shared to the `HEADLINES` network feed by a user.
   - Response includes article attributes such as id, title, publishedAt (date), description, url, etc.
   - Each article object in the JSON response is tied a specific user (i.e. user who shared the article to the network)
 
 Sample JSON Response:
+  ````
   [
     {
       "id": 1,
@@ -48,3 +49,4 @@ Sample JSON Response:
       "updated_at": "2017-12-06T22:20:10.866Z"
     }
   ]
+````
